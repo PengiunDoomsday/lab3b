@@ -304,38 +304,17 @@ class RedBlackTree:
         if self.root is not None and self.root.is_red():
             self.root.color = "black"
     
-# =============================================================================
-#     def search(self, key):
-#         current_node = self.root
-#         while current_node is not None:
-#             # Return the node if the key matches.
-#             if current_node.key[:-1] == key:
-#                 return current_node
-#             
-#             # Navigate to the left if the search key is
-#             # less than the node's key.
-#             elif key < current_node.key[:-1]:
-#                 current_node = current_node.left
-#     
-#             # Navigate to the right if the search key is
-#             # greater than the node's key.
-#             else:
-#                 current_node = current_node.right
-#     
-#         # The key was not found in the tree.
-#         return None
-# =============================================================================
-    
+
     def search(self, key):
         current_node = self.root
         while current_node is not None:
             # Return the node if the key matches.
-            if current_node.key[:-1] == key:
+            if current_node.key == key:
                 return current_node
         
             # Navigate to the left if the search key is
             # less than the node's key.
-            elif key < current_node.key[:-1]:
+            elif key < current_node.key:
                 current_node = current_node.left
 
             # Navigate to the right if the search key is
@@ -345,6 +324,28 @@ class RedBlackTree:
 
         # The key was not found in the tree.
         return None
+
+# =============================================================================
+#     def search(self, key):
+#         current_node = self.root
+#         while current_node is not None:
+#             # Return the node if the key matches.
+#             if current_node.key[:-1] == key:
+#                 return current_node
+#         
+#             # Navigate to the left if the search key is
+#             # less than the node's key.
+#             elif key < current_node.key[:-1]:
+#                 current_node = current_node.left
+# 
+#             # Navigate to the right if the search key is
+#             # greater than the node's key.
+#             else:
+#                 current_node = current_node.right
+# 
+#         # The key was not found in the tree.
+#         return None
+# =============================================================================
     
     def try_case1(self, node):
         if node.is_red() or node.parent is None:
@@ -396,3 +397,5 @@ class RedBlackTree:
                     self.rotate_left(sibling)
                     return True
         return False # not case 6
+    
+    
